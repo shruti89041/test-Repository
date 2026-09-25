@@ -1,0 +1,25 @@
+name: Deploy website to EC2
+
+on: 
+ push:
+  branches:
+   - main
+
+ jobs:
+   deploy:
+    runs_on" ubuntu-latest
+
+    steps:
+       name: Checkout code
+       uses: actions/checkout
+
+       name: Deploy to EC2
+       with:
+        host: ${{secrets:EC2Host}}
+
+    script:
+     sudo apt update
+     apt install nginx -y
+     sudo cp index.html var/www/html
+     sudo systemctl start nginx
+      
