@@ -10,10 +10,10 @@ on:
     runs_on" ubuntu-latest
 
     steps:
-       name: Checkout code
+     - name: Checkout code
        uses: actions/checkout
 
-       name: Deploy to EC2
+     - name: Deploy to EC2
        with:
         host: ${{secrets:EC2Host}}
 
